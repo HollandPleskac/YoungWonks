@@ -18,14 +18,22 @@ Code Overview: The code creates a socket, connects to google.com, requests the
 homepage, and recieves the result. Then, it closes the socket.
 
 Official Reference Sheet: https://docs.google.com/document/d/1lKwvuLmQsa2H4cPBuHtPUoEYD9neWjswUMkyAF_rtkw/edit?usp=sharing
+
+Note:
+replace |server_ip_address = gethostbyname("google.com")| with commented out
+code below and replace |connection.sendall(b"GET / HTTP/1.1\r\n\r\n")|
+with commented out code below to download the httpbin.org webpage
 -------------------------------------------------------------------------------
 '''
+
 from socket import *
 connection = socket(AF_INET,SOCK_STREAM)
 server_ip_address = gethostbyname("google.com")
+#server_ip_address = gethostbyname("httpbin.org")
 server_port = 80
 connection.connect((server_ip_address,server_port))
 connection.sendall(b"GET / HTTP/1.1\r\n\r\n")
+#connection.sendall(b"GET / HTTP/9.3\r\n\r\n")
 while True:
      recieved_letter=connection.recv(1).decode("utf-8")
      if recieved_letter=='':
