@@ -1,4 +1,4 @@
-''Sockets 04: Mini-Project (Web Server)
+'''Sockets 04: Mini-Project (Web Server)
 -------------------------------------------------------------------------------
 Creating a Web Server
  * Code creates a socket object and opens it on port 1234. Client sockets
