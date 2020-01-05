@@ -1,5 +1,5 @@
 # run this code on a separate computer at the same time as the server is running
-# dont go into the terminal and type nc localhost 12345 (or whatever the port is) on the server computer when attempting to connect to the client
+# dont go into the terminal and type nc localhost 12345 (or whatever the port is) in the terminal on the server computer when attempting to connect to the client
 # type inconfig into the terminal to get the ip address
 
 import socket
