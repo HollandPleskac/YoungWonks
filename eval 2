@@ -1,0 +1,76 @@
+import pygame
+from pygame.locals import *
+pygame.init()
+pygame.font.init()
+
+screen = pygame.display.set_mode((600,600))
+pygame.display.set_caption("Python Level 2 Evaluation")
+
+myFont = pygame.font.SysFont("Comic Sans MS", 10)
+
+color = {
+    "red" : [0,0,0],
+    "green" : [0,0,0],
+    "yellow" : [0,0,0],
+    "blue" : [0,0,0],
+    "white" : (255,255,255),
+    "black" : (0,0,0),
+    }
+
+isPressed = False
+
+def DefaultCircuit():
+    pygame.draw.circle(screen,color["black"],(150,200),10)
+    pygame.draw.circle(screen,color["white"], (150,200),8)
+    pygame.draw.line(screen,color["yellow"],(150,210),(150,250),2)
+    pygame.draw.line(screen,color["yellow"],(150,250),(200,250),2)
+    pygame.draw.line(screen,color["red"],(200,250),(210,225),2)
+    pygame.draw.line(screen,color["red"],(210,225),(220,275),2)
+    pygame.draw.line(screen,color["red"],(220,275),(230,225),2)
+    pygame.draw.line(screen,color["red"],(230,225),(240,275),2)
+    pygame.draw.line(screen,color["red"],(240,275),(250,225),2)
+    pygame.draw.line(screen,color["red"],(250,225),(260,275),2)
+    pygame.draw.line(screen,color["red"],(260,275),(270,250),2)
+    pygame.draw.line(screen,color["yellow"],(270,250),(320,250),2)
+    pygame.draw.polygon(screen, color["green"], [[320, 275], [320, 225], [350, 250]], 2) #draws a triangle)
+    pygame.draw.line(screen,color["black"],(350,225),(350,275),2)
+    pygame.draw.line(screen,color["black"],(350,250),(400,250),2)
+    pygame.draw.line(screen,color["black"],(400,250),(400,310),2)
+    pygame.draw.line(screen,color["black"],(375,310),(425,310),2)
+    pygame.draw.line(screen,color["black"],(385,320),(415,320),2)
+    pygame.draw.line(screen,color["black"],(395,330),(405,330),2)
+    pygame.draw.line(screen,color["black"],(398.5,340),(401.5,340),2)
+    
+    screen.blit(myFont.render('GND',False,color["black"]),(390,345))
+    screen.blit(myFont.render('3.3V',False,color["black"]),(140,170))
+    screen.blit(myFont.render('DC: 76',False,color["black"]),(320,280))
+
+while True:
+    if isPressed == True:
+        if color["red"][0]<255 and color["green"][1]<255 and color["yellow"][0]<255 and color["yellow"][1]<255 and color["blue"][2]<255:
+            color["red"][0]+=1
+            color["green"][1]+=1
+            color["yellow"][0]+=1
+            color["yellow"][1]+=1
+            color["blue"][2]+=1
+    screen.fill((255,255,255))
+    DefaultCircuit()
+    pygame.display.update()
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            pygame.quit()
+            exit()
+        elif event.type == pygame.KEYDOWN:
+            if event.key == K_UP:
+                isPressed = True
+        elif event.type == pygame.KEYUP:
+            isPressed = False
+            color["red"][0]=0
+            color["green"][1]=0
+            color["yellow"][0]=0
+            color["yellow"][1]=0
+            color["blue"][2]=0
+                
+
+                
+            
